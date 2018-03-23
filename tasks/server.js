@@ -44,7 +44,7 @@ module.exports = function (gulp, $) {
     gulp.watch([
       '.jshintrc',
       'source/**/*.js'
-    ], ['jshint', 'jscs', 'clean:examples', 'scripts:setup']);
+    ], ['jshint', 'jscs']);
 
     gulp.watch([
       'source/**/*.scss'

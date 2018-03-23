@@ -363,9 +363,6 @@
           elementIsPlaceholder: function (element) {
             return element.hasClass(treeConfig.placeholderClass);
           },
-          elementIsDropzone: function (element) {
-            return element.hasClass(treeConfig.dropzoneClass);
-          },
           elementContainsTreeNodeHandler: function (element) {
             return element[0].querySelectorAll('[ui-tree-handle]').length >= 1;
           },

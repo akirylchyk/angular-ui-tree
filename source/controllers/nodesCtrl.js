@@ -3,8 +3,8 @@
 
   angular.module('ui.tree')
 
-    .controller('TreeNodesController', ['$scope', '$element', '$timeout',
-      function ($scope, $element, $timeout) {
+    .controller('TreeNodesController', ['$scope', '$element',
+      function ($scope, $element) {
         this.scope = $scope;
 
         $scope.$element = $element;
@@ -48,11 +48,22 @@
           return $scope.$modelValue.length > 0;
         };
 
+        $scope.safeApply = function (fn) {
+          var phase = this.$root.$$phase;
+          if (phase == '$apply' || phase == '$digest') {
+            if (fn && (typeof (fn) === 'function')) {
+              fn();
+            }
+          } else {
+            this.$apply(fn);
+          }
+        };
+
         //Called in apply method of UiTreeHelper.dragInfo.
         $scope.removeNode = function (node) {
           var index = $scope.$modelValue.indexOf(node.$modelValue);
           if (index > -1) {
-            $timeout(function () {
+            $scope.safeApply(function () {
               $scope.$modelValue.splice(index, 1)[0];
             });
             return $scope.$treeScope.$callbacks.removed(node);
@@ -62,7 +73,7 @@
 
         //Called in apply method of UiTreeHelper.dragInfo.
         $scope.insertNode = function (index, nodeData) {
-          $timeout(function () {
+          $scope.safeApply(function () {
             $scope.$modelValue.splice(index, 0, nodeData);
           });
         };

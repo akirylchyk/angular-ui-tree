@@ -1,6 +1,6 @@
 /**
- * @license Angular UI Tree v2.22.5
- * (c) 2010-2017. https://github.com/angular-ui-tree/angular-ui-tree
+ * @license Angular UI Tree v2.21.3
+ * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
  * License: MIT
  */
 (function () {
@@ -10,7 +10,6 @@
     .constant('treeConfig', {
       treeClass: 'angular-ui-tree',
       emptyTreeClass: 'angular-ui-tree-empty',
-      dropzoneClass: 'angular-ui-tree-dropzone',
       hiddenClass: 'angular-ui-tree-hidden',
       nodesClass: 'angular-ui-tree-nodes',
       nodeClass: 'angular-ui-tree-node',
@@ -18,6 +17,7 @@
       placeholderClass: 'angular-ui-tree-placeholder',
       dragClass: 'angular-ui-tree-drag',
       dragThreshold: 3,
+      levelThreshold: 30,
       defaultCollapsed: false,
       appendChildOnHover: true
     });

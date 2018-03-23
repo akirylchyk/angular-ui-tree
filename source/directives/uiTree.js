@@ -44,14 +44,10 @@
               scope.$emptyElm.append(tdElm);
             } else {
               scope.$emptyElm = angular.element($window.document.createElement('div'));
-              scope.$dropzoneElm = angular.element($window.document.createElement('div'));
             }
 
             if (config.emptyTreeClass) {
               scope.$emptyElm.addClass(config.emptyTreeClass);
-            }
-            if (config.dropzoneClass) {
-              scope.$dropzoneElm.addClass(config.dropzoneClass);
             }
 
             scope.$watch('$nodesScope.$modelValue.length', function (val) {
@@ -60,7 +56,6 @@
               }
 
               ctrl.resetEmptyElement();
-              ctrl.resetDropzoneElement();
             }, true);
 
             scope.$watch(attrs.dragEnabled, function (val) {
@@ -79,13 +74,6 @@
             scope.$watch(attrs.nodropEnabled, function (val) {
               if ((typeof val) == 'boolean') {
                 scope.nodropEnabled = val;
-              }
-            });
-
-            scope.$watch(attrs.dropzoneEnabled, function (val) {
-              if ((typeof val) == 'boolean') {
-                scope.dropzoneEnabled = val;
-                ctrl.resetDropzoneElement();
               }
             });
 
